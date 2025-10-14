@@ -1,8 +1,8 @@
 {
     "name": "My Addon",
-    "version": "17.0.1.0.0",
+    "version": "19.0.1.0.0",
     "depends": [
-        "mis_builder_budget",
+        "web_environment_ribbon",
     ],
     "external_dependencies": {
         "python": ["pydantic>=2"],

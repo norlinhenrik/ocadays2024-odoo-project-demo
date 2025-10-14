@@ -4,7 +4,7 @@
 # Base stage, with the non-python runtime dependencies, and uv.
 #
 
-FROM ghcr.io/acsone/odoo-bedrock:17.0-py312-jammy-latest AS base
+FROM ghcr.io/acsone/odoo-bedrock:19.0-py313-noble-latest AS base
 
 # Install apt runtime dependencies.
 RUN set -e \
@@ -32,7 +32,7 @@ RUN set -e \
   && apt update \
   && apt -y install --no-install-recommends \
        git \
-       python3.12-dev \
+       python3.13-dev \
        build-essential \
        libpq-dev \
   && apt -y clean \
@@ -55,6 +55,5 @@ COPY --from=dependencies $VIRTUAL_ENV $VIRTUAL_ENV
 # Install the app
 COPY . /app
 WORKDIR /app
-RUN python -m compileall .
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked
